@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* get_content (path) {
+char* get_content (const char* path) {
   FILE *fp;
 
-  fp = fopen(argv[1], "r");
+  fp = fopen(path, "r");
   if (fp == NULL) {
     fprintf(stderr, "%s not found.\n", path);
     exit(1);
@@ -23,15 +23,14 @@ char* get_content (path) {
   return buffer;
 }
 
-struct token
-{
+typedef struct {
   char opera;
   int left;
   int right;
-};
+} token;
 
 token* get_token(char* buff) {
-  return;
+  return NULL;
 };
 
 int main(int argc, char **argv)
