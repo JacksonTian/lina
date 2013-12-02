@@ -1,17 +1,6 @@
 var fs = require('fs');
 var path = require('path');
 
-var argv = process.argv;
-
-if (!argv[2]) {
-  console.log('Please use:\n  %s %s filename.js', argv[0], argv[1]);
-  process.exit(1);
-}
-
-var content = fs.readFileSync(path.join(__dirname, argv[2]), 'utf8');
-
-console.log(content);
-
 var getTokens = function (content) {
   var flags = {
     'single': false, // 单引号
@@ -158,8 +147,10 @@ var runExpression = function (expression) {
   return result;
 };
 
-var expressions = getExpressionTree(getType(getTokens(content)));
-// console.log(expressions);
-expressions.forEach(function (expression) {
-  console.log(runExpression(expression));
-});
+exports.run = function (content) {
+  var expressions = getExpressionTree(getType(getTokens(content)));
+  // console.log(expressions);
+  expressions.forEach(function (expression) {
+    console.log(runExpression(expression));
+  });
+};

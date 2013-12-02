@@ -1,0 +1,25 @@
+{
+  "name": "lina",
+  "version": "0.0.1",
+  "description": "lina programming language",
+  "main": "parser.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "mocha -R"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JacksonTian/lina.git"
+  },
+  "keywords": [
+    "lina"
+  ],
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JacksonTian/lina/issues"
+  },
+  "homepage": "https://github.com/JacksonTian/lina"
+}

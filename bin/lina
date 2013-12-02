@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var lina = require('../parser');
+var argv = require('optimist').argv;
+
+var content = '';
+if (argv.e) {
+  content = argv.e;
+} else {
+  var filename = argv._[0];
+  content = fs.readFileSync(filename, 'utf8');
+}
+
+lina.run(content);
