@@ -118,7 +118,7 @@ var getExpressionTree = function (tokens) {
 var getValue = function (token) {
   switch (token.type) {
     case 'number':
-      return parseInt(token.token, 10);
+      return parseFloat(token.token);
   }
 };
 
