@@ -1,14 +1,35 @@
 #!/usr/bin/env node
 var fs = require('fs');
-var lina = require('../parser');
+var lina = require('../');
 var argv = require('optimist').argv;
 
-var content = '';
-if (argv.e) {
-  content = argv.e;
-} else {
-  var filename = argv._[0];
-  content = fs.readFileSync(filename, 'utf8');
-}
+var printLogo = function () {
+  console.log('///////////////////////////////////////////');
+  console.log('///  ////////   //////   //////  ///////////////');
+  console.log('///  /////////////////     ////  /////////////');
+  console.log('///  ////////   //////   /  ///  //////////////');
+  console.log('///  ////////   //////   //  //  ///////////////////');
+  console.log('///     /////   //////   ////    //////////////');
+  console.log('/////////////////////////////////////////////');
+};
 
-lina.run(content);
+var printHelp = function () {
+  console.log('Please use:');
+  console.log('  %s filename.lina', argv.$0);
+  console.log('  %s -e "(+ 1 1)"', argv.$0);
+  console.log('');
+};
+
+if (argv.e) {
+  lina.run(argv.e);
+} else if (argv.h) {
+  printHelp();
+} else if (argv._[0]) {
+  var filename = argv._[0];
+  var content = fs.readFileSync(filename, 'utf8');
+  lina.run(content);
+} else {
+  printLogo();
+  printHelp();
+  process.exit(1);
+}
