@@ -4,3 +4,4 @@ y.tab.*
 y.output
 lex.yy.c
 src/mycalc
+coverage.html

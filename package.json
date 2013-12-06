@@ -7,7 +7,16 @@
     "example": "example"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R spec"
+    "test": "make test",
+    "blanket": {
+      "pattern": "lina/lib",
+      "data-cover-flags": {
+        "debug": false
+      }
+    },
+    "travis-cov": {
+      "threshold": 50
+    }
   },
   "repository": {
     "type": "git",
@@ -21,7 +30,9 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "blanket": "*",
+    "travis-cov": "*"
   },
   "keywords": [
     "lina"

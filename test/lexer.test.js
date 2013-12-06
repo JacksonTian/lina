@@ -42,25 +42,59 @@ describe('lexer/scan', function () {
     lexer.scan('"1"').should.be.eql(['"1"']);
   });
 
-  it('\'', function () {
-    (function () {
-      lexer.scan('\'');
-    }).should.throw('Except \'.\n\'\n ^');
+  it('" "', function () {
+    lexer.scan('" "').should.be.eql(['" "']);
+  });
+
+  it('\'\'', function () {
+    lexer.scan('\'\'').should.be.eql(['\'\'']);
   });
 
   it('()', function () {
     lexer.scan('()').should.be.eql(['(', ')']);
   });
 
-  it('((', function () {
+  it('empty string', function () {
+    lexer.scan('').should.be.eql([]);
+  });
+
+  it('space string', function () {
+    lexer.scan(' ').should.be.eql([]);
+  });
+
+  it('" ', function () {
     (function () {
-      lexer.scan('((');
-    }).should.throw('Except ).\n((\n  ^');
+      lexer.scan('" ');
+    }).should.throw('Except ".\n" \n  ^');
+  });
+
+  it('\'', function () {
+    (function () {
+      lexer.scan('\'');
+    }).should.throw('Except \'.\n\'\n ^');
+  });
+
+  it('(', function () {
+    (function () {
+      lexer.scan('(');
+    }).should.throw('Except ).\n(\n ^');
   });
 
   it(')', function () {
     (function () {
       lexer.scan(')');
     }).should.throw('Unexcepted ).\n)\n^');
+  });
+
+  it('[', function () {
+    (function () {
+      lexer.scan('[');
+    }).should.throw('Except ].\n[\n ^');
+  });
+
+  it(']', function () {
+    (function () {
+      lexer.scan(']');
+    }).should.throw('Unexcepted ].\n]\n^');
   });
 });
