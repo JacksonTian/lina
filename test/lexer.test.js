@@ -26,6 +26,18 @@ describe('lexer/scan', function () {
     lexer.scan('(+ 1 1)').should.be.eql(['(', '+', '1', '1', ')']);
   });
 
+  it('(+ 1 1) and line break', function () {
+    lexer.scan('(+ 1 1)\n').should.be.eql(['(', '+', '1', '1', ')']);
+  });
+
+  it('(+\n 1 1)', function () {
+    lexer.scan('(+\n 1 1)').should.be.eql(['(', '+', '1', '1', ')']);
+  });
+
+  it('(+\n1 1)', function () {
+    lexer.scan('(+\n1 1)').should.be.eql(['(', '+', '1', '1', ')']);
+  });
+
   it('(+ 1 (+ 2 3))', function () {
     lexer.scan('(+ 1 (+ 2 3))').should.be.eql(['(', '+', '1', '(', '+', '2', '3', ')', ')']);
   });
