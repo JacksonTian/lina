@@ -21,7 +21,7 @@ var printHelp = function () {
 };
 
 if (argv.e) {
-  lina.run(argv.e);
+  lina.run(String(argv.e));
 } else if (argv.h) {
   printHelp();
 } else if (argv._[0]) {

@@ -109,4 +109,9 @@ describe('lexer/scan', function () {
       lexer.scan(']');
     }).should.throw('Unexcepted ].\n]\n^');
   });
+
+  it('defun', function () {
+    var def = '(defun helloWorld ()\n\t(echo "hello, world!"))';
+    lexer.scan(def).should.be.eql(['(', 'defun', 'helloWorld', '(', ')', '(', 'echo', '"hello, world!"', ')', ')']);
+  });
 });
